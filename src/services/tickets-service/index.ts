@@ -7,8 +7,15 @@ async function createTicket(ticketTypeId: number, enrollmentId: number) {
   return newTicket;
 }
 
+async function getTicketTypes() {
+  const ticketType = await ticketRepository.getTicketTypes();
+  if (!ticketType) throw notFoundError();
+  return ticketType;
+}
+
 const ticketsService = {
   createTicket,
+  getTicketTypes,
 };
 
 export default ticketsService;

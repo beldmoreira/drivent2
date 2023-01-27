@@ -19,3 +19,12 @@ export async function ticketPost(req: AuthenticatedRequest, res: Response) {
     return res.sendStatus(httpStatus.NOT_FOUND);
   }
 }
+
+export async function getTicketTypes(req: AuthenticatedRequest, res: Response) {
+  try {
+    const ticketType = await ticketsService.getTicketTypes();
+    return res.status(httpStatus.OK).send(ticketType);
+  } catch {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}

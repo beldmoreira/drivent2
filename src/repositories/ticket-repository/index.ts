@@ -13,8 +13,15 @@ async function createTicket(ticketTypeId: number, enrollmentId: number) {
   });
 }
 
+async function getTicketTypes() {
+  return prisma.ticketType.findMany({
+    orderBy: { id: 'asc' },
+  });
+}
+
 const ticketRepository = {
   createTicket,
+  getTicketTypes,
 };
 
 export default ticketRepository;
